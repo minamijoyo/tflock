@@ -17,6 +17,9 @@ import (
 	"github.com/mitchellh/cli"
 )
 
+// Version is a version number.
+var version = "0.0.1"
+
 // LockCommand is a Command implementation that lock a Terraform state.
 type LockCommand struct {
 	command.StateMeta
@@ -102,6 +105,7 @@ func main() {
 
 	c := &cli.CLI{
 		Name:       "tflock",
+		Version:    version,
 		Args:       args,
 		Commands:   commands,
 		HelpWriter: os.Stdout,
