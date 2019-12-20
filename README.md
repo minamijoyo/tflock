@@ -4,8 +4,14 @@ Lock your Terraform state manually.
 
 # Why
 
-Terraform has a state lock mechanism and it works automatically. Nevertheless, I found it's useful to lock state manually when I don't want team members to touch code during refactorings of Terraform configurations.
-Terraform has the `terraform force-unlock` command for when somthing goes wrong, and it doesn't provide the `terraform lock` command. It seems that this decision was by design. Not all backend types can acquire explicit lock. For more details, see https://github.com/hashicorp/terraform/issues/17203
+Terraform has a state lock mechanism and it works automatically.
+Nevertheless, I found it's useful to lock state manually when refactoring Terraform configurations.
+
+In team development, Terraform configurations are generally managed by VCS such as git, and states are shared via a remote state storage which outside of version control. Most Terraform refactorings require not only configuration changes but also state manipulations such as state mv / rm / import. It is not desirable to change state before merging configuration changes. My colleague may be working for another task. I don't want team members to change the state during refactoring to avoid unexpected conflicts.
+
+Terraform has the `terraform force-unlock` command in case something goes wrong, however it doesn't provide the `terraform lock` command.
+It seems that this decision was intentional by design. Not all backend types can acquire explicit lock.
+For more details, see https://github.com/hashicorp/terraform/issues/17203
 
 But I want `terraform lock` command!
 
@@ -15,8 +21,10 @@ But I want `terraform lock` command!
 
 That's all.
 
-I'm testing in Terraform 0.12 + backend type s3 (lock with dynamodb).
-Other backend types may or may not work.
+Currently, it is tested only with Terraform 0.12 + AWS S3 (locked with DynamoDB).
+
+The tflock uses a state lock function as same as Terraform uses under the hood.
+So other backend types may or may not work.
 
 # Install
 
@@ -24,7 +32,22 @@ Required: Go 1.13+.
 
 ```
 $ go get github.com/minamijoyo/tflock
+
+$ tflock --version
+0.0.1
 ```
+
+# Usage
+
+To lock your Terraform state, run `tflock` command in the same directory where you run the `terraform` command.
+
+```
+$ tflock
+```
+
+If you want to check if locked successfully , use `terraform plan` command.
+
+If you want to unlock, use `terraform force-unlock` command.
 
 # License
 MIT
