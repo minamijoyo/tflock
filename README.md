@@ -26,6 +26,13 @@ Currently, it is tested only with Terraform 0.12 + AWS S3 (locked with DynamoDB)
 The tflock uses a state lock function as same as Terraform uses under the hood.
 So other backend types may or may not work.
 
+# Prerequisites
+
+State locking must be enabled in your Terraform backend configuration.
+
+If you haven't set it up yet, see Terraform documentation:
+https://www.terraform.io/docs/state/locking.html
+
 # Install
 
 Required: Go 1.13+.
