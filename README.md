@@ -39,6 +39,8 @@ Required: Go 1.13+.
 
 ```
 $ go get github.com/minamijoyo/tflock
+$ cd $GOPATH/src/github.com/minamijoyo/tflock
+$ go install
 
 $ tflock --version
 0.0.1
