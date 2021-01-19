@@ -21,7 +21,7 @@ But I want `terraform lock` command!
 
 That's all.
 
-Currently, it is tested only with Terraform 0.12 + AWS S3 (locked with DynamoDB).
+Currently, it is tested only with Terraform 0.14 + AWS S3 (locked with DynamoDB).
 
 The tflock uses a state lock function as same as Terraform uses under the hood.
 So other backend types may or may not work.
@@ -35,10 +35,13 @@ https://www.terraform.io/docs/state/locking.html
 
 # Install
 
-Required: Go 1.13+.
+Required: Go 1.15+.
+
+* Clone tflock repo
 
 ```
-$ go get github.com/minamijoyo/tflock
+$ cd tflock
+$ go build .
 
 $ tflock --version
 0.0.1
@@ -46,7 +49,7 @@ $ tflock --version
 
 # Usage
 
-To lock your Terraform state, run `tflock` command in the same directory where you run the `terraform` command.
+To lock your Terraform state, run `tflock` command in the same directory where you run the `terraform init` command.
 
 ```
 $ tflock
@@ -58,3 +61,4 @@ If you want to unlock, use `terraform force-unlock` command.
 
 # License
 MIT
+
