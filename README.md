@@ -15,6 +15,8 @@ For more details, see https://github.com/hashicorp/terraform/issues/17203
 
 But I want `terraform lock` command!
 
+NOTICE: I had written the tflock for refactoring Terraform configurations, but after using it, I figured out a more sophisticated way and I wrote a new tool: [tfmigrate](https://github.com/minamijoyo/tfmigrate). If your concern is only refactoring, I highly recommend you to use the tfmigrate rather than the tflock.
+
 # Features
 
 - Lock your Terraform state manually.
