@@ -8,6 +8,6 @@ replace google.golang.org/grpc v1.31.1 => google.golang.org/grpc v1.27.1
 
 require (
 	github.com/hashicorp/logutils v1.0.0
-	github.com/hashicorp/terraform v0.14.4
+	github.com/hashicorp/terraform v0.15.1
 	github.com/mitchellh/cli v1.1.2
 )
