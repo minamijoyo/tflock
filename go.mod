@@ -1,10 +1,10 @@
 module github.com/minamijoyo/tflock
 
-go 1.15
-
-replace k8s.io/client-go => k8s.io/client-go v0.0.0-20190620085101-78d2af792bab
+go 1.16
 
 replace google.golang.org/grpc v1.31.1 => google.golang.org/grpc v1.27.1
+
+replace k8s.io/client-go => k8s.io/client-go v0.0.0-20190620085101-78d2af792bab
 
 require (
 	github.com/hashicorp/logutils v1.0.0
