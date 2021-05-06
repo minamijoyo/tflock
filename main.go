@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -13,7 +12,9 @@ import (
 	"github.com/hashicorp/logutils"
 	backendInit "github.com/hashicorp/terraform/backend/init"
 	"github.com/hashicorp/terraform/command"
+	"github.com/hashicorp/terraform/command/arguments"
 	"github.com/hashicorp/terraform/command/clistate"
+	"github.com/hashicorp/terraform/command/views"
 	"github.com/mitchellh/cli"
 )
 
@@ -34,7 +35,8 @@ func (c *LockCommand) Run(args []string) int {
 		return 1
 	}
 
-	stateLocker := clistate.NewLocker(context.Background(), (0 * time.Second), c.Ui, c.Colorize())
+	view := views.NewStateLocker(arguments.ViewHuman, c.View)
+	stateLocker := clistate.NewLocker((0 * time.Second), view)
 	if err := stateLocker.Lock(stateFromMgr, "tflock"); err != nil {
 		c.Ui.Error(fmt.Sprintf("Error locking source state: %s", err))
 		return 1
