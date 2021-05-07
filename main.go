@@ -19,7 +19,7 @@ import (
 )
 
 // Version is a version number.
-var version = "0.0.2"
+var version = "0.0.3"
 
 // LockCommand is a Command implementation that lock a Terraform state.
 type LockCommand struct {
