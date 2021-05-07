@@ -23,7 +23,7 @@ NOTICE: I had written the tflock for refactoring Terraform configurations, but a
 
 That's all.
 
-Currently, it is tested only with Terraform 0.14 + AWS S3 (locked with DynamoDB).
+Currently, it is tested only with Terraform 0.15 + AWS S3 (locked with DynamoDB).
 
 The tflock uses a state lock function as same as Terraform uses under the hood.
 So other backend types may or may not work.
@@ -37,7 +37,7 @@ https://www.terraform.io/docs/state/locking.html
 
 # Install
 
-Required: Go 1.15+.
+Required: Go 1.16+.
 
 * Clone tflock repo
 
