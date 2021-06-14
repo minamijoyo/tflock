@@ -1,4 +1,4 @@
-module github.com/minamijoyo/tflock
+module github.com/klaviyo/tflock
 
 go 1.16
 
