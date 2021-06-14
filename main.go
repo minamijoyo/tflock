@@ -1,6 +1,7 @@
 package main
 
 import (
+	"reflect"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -42,6 +43,7 @@ func (c *LockCommand) Run(args []string) int {
 		return 1
 	}
 
+	fmt.Println(reflect.ValueOf(stateLocker).Elem().FieldByName("lockID").String())
 	return 0
 }
 
